@@ -1,0 +1,32 @@
+{
+  "name": "angular-d3",
+  "version": "1.0.0",
+  "description": "testing out building a new app",
+  "main": "src/app.js",
+  "scripts": {
+    "prebuild": "npm run clean -s",
+    "build:js": "browserify -s angulard3 ./src/app.js | uglifyjs > ./dist/app.js",
+    "build": "npm run build:js",
+    "clean": "rimraf dist && mkdir dist && rimraf test/coverage",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "browserify": "^10.2.4",
+    "browserify-shim": "^3.8.9",
+    "free-range-app-utils": "^0.7.0",
+    "gulp": "^3.9.0",
+    "gulp-frau-publisher": "^2.2.0",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.12.37",
+    "karma-cli": "0.0.4",
+    "karma-jasmine": "^0.3.5",
+    "karma-jasmine-ajax": "^0.1.12",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "^1.9.17",
+    "rimraf": "^2.4.0",
+    "uglify-js": "^2.4.23"
+  }
+}
