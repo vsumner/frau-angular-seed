@@ -1,17 +1,14 @@
-var angular = require('angular'),
-    config = require('./config');
+var app = require('./app.module');
 
-angular.module(config.name)
-.config([
+app.config([
     '$locationProvider',
     '$routeProvider',
     function($locationProvider, $routeProvider) {
       $locationProvider.hashPrefix('!');
       // routes
       $routeProvider
-        .when("/", {
-          templateUrl: "./partials/partial1.html",
-          controller: "MainController"
+        .when('/',{
+          template:'<main></main>'
         })
         .otherwise({
            redirectTo: '/'
