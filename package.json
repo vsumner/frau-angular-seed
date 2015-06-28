@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "prebuild": "npm run clean -s",
-    "build:js": "browserify -s angulard3 ./src/app.js | uglifyjs > ./dist/app.js",
+    "build:js": "browserify -x angular -s angulard3 ./src/js/app.js | uglifyjs > ./dist/app.js",
     "build": "npm run build:js",
     "clean": "rimraf dist && mkdir dist && rimraf test/coverage",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -28,5 +28,34 @@
     "phantomjs": "^1.9.17",
     "rimraf": "^2.4.0",
     "uglify-js": "^2.4.23"
+  },
+  "browser":{
+  },
+  "browserify-shim":{
+    "jquery": {
+      "exports": "$"
+    },
+    "angular": {
+      "exports": "angular",
+      "depends": "jquery"
+    },
+    "angular-route": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "null"
+    },
+    "angular-loader": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "null"
+    },
+    "angular-mocks": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "null"
+    }
   }
 }
