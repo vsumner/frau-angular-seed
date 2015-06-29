@@ -10,7 +10,7 @@
     "build:js": "browserify -x angular -s frau-angular-seed ./src/app.js | uglifyjs > ./dist/app.js",
     "build:html": "gulp html2js",
     "build:resources": "gulp copy-resources-to-dist",
-    "build": "npm run build:js -s && npm run build:css -s && npm run build:html -s && npm run build:resources -s",
+    "build": "npm run build:js && npm run build:css && npm run build:html && npm run build:resources && npm run build:appconfig",
     "clean": "rimraf dist && mkdir dist && rimraf test/coverage",
     "postinstall": "bower install",
     "publish-release": "npm run build -s && gulp publish-release",
