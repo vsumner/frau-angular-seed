@@ -1,17 +1,25 @@
 {
-  "name": "angular-d3",
+  "name": "frau-angular-seed",
   "version": "1.0.0",
   "description": "testing out building a new app",
   "main": "src/app.js",
   "scripts": {
     "prebuild": "npm run clean -s",
+    "build:appconfig": "gulp appconfig",
+    "build:css": "",
     "build:js": "browserify -x angular -s angulard3 ./src/js/app.js | uglifyjs > ./dist/app.js",
     "build": "npm run build:js",
     "clean": "rimraf dist && mkdir dist && rimraf test/coverage",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "bower install",
+    "publish-release": "npm run build -s && gulp publish-release",
+    "resolver": "gulp appresolver",
+    "test:lint": "jshint --exclude test/coverage/**/*.js* src test gulpfile.js",
+    "test": "npm run test:lint -s"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vsumner/frau-angular-seed"
+  },
   "devDependencies": {
     "bower": "^1.4.1",
     "browserify": "^10.2.4",
@@ -20,6 +28,7 @@
     "gulp": "^3.9.0",
     "gulp-frau-publisher": "^2.2.0",
     "jasmine-core": "^2.3.4",
+    "jshint": "^2.8.0",
     "karma": "^0.12.37",
     "karma-cli": "0.0.4",
     "karma-jasmine": "^0.3.5",
@@ -29,9 +38,9 @@
     "rimraf": "^2.4.0",
     "uglify-js": "^2.4.23"
   },
-  "browser":{
-  },
-  "browserify-shim":{
+  "browser": {},
+  
+  "browserify-shim": {
     "jquery": {
       "exports": "$"
     },

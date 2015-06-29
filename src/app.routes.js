@@ -14,4 +14,4 @@ app.config([
            redirectTo: '/'
         });
     }
-  ])
+  ]);
