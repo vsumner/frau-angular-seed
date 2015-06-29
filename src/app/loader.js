@@ -12,7 +12,7 @@ var CDN = 'https://s.brightspace.com';
  * @type {Object}
  */
 var libVersions = {
- 
+  "angular": "1.4.1"
 };
 
 /**
@@ -42,9 +42,9 @@ var requireJsConfig = {
 
   paths:{
     'angular': CDN + '/lib/angular/'+libVersions.angular+'/angular.min',
-	  'angular-loader': CDN + '/lib/angular-loader/'+libVersions.angular+'/angular-loader.min',
-	  'angular-resource': CDN + '/lib/angular-resource/'+libVersions.angular+'/angular-resource.min',
-	  'angular-route': CDN + '/lib/angular-route/'+libVersions.angular+'/angular-route.min',
+	  'angular-loader': CDN + '/lib/angular/'+libVersions.angular+'/angular-loader.min',
+	  'angular-resource': CDN + '/lib/angular/'+libVersions.angular+'/angular-resource.min',
+	  'angular-route': CDN + '/lib/angular/'+libVersions.angular+'/angular-route.min',
     'frau-templates': '$APP_PATH$views.min'
   }
 
@@ -120,7 +120,7 @@ define('frau-load',['d2lLocale', 'd2lContext', 'frau-templates','angular-load'])
  * ensures all scripts are loaded for the app
  * @return {Promise}
  */
-module.exports.load = function() {
+module.exports = function() {
   var deferred = Q.defer();
   requirejs(['frau-load'],function(){
         deferred.resolve();

@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "seed for angular and frau",
   "main": "src/app.js",
-  "private":true,
+  "private": true,
   "scripts": {
     "prebuild": "npm run clean -s",
     "build:appconfig": "gulp appconfig",
     "build:css": "node-sass ./src/app.scss | cleancss -o ./dist/app.css",
-    "build:js": "browserify -x d2l-locale -x d2l-orgunit -x jquery -x angular -s frau-angular-seed ./src/app.js | uglifyjs > ./dist/app.js",
+    "build:js": "browserify -x d2l-locale -x d2l-orgunit -x jquery -x angular -x requirejs -s frau-angular-seed ./src/app.js | uglifyjs > ./dist/app.js",
     "build:html": "gulp html2js",
     "build:resources": "gulp copy-resources-to-dist",
     "build": "npm run build:js && npm run build:css && npm run build:html && npm run build:resources && npm run build:appconfig",
@@ -61,6 +61,7 @@
     "peanut-gallery": "^1.0.0",
     "phantomjs": "^1.9.17",
     "q": "^1.4.1",
+    "requirejs": "^2.1.18",
     "rimraf": "^2.4.0",
     "uglify-js": "^2.4.23"
   },
@@ -71,7 +72,7 @@
     "d2lContext": "global:d2lContext",
     "d2lLocale": "global:d2lLocale",
     "d2l-locale": "global:d2lLocale",
-    "angular":"global:angular",
+    "angular": "global:angular",
     "jquery": "global:$"
   }
 }

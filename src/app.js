@@ -1,8 +1,25 @@
 'use strict';
 
-var angular = require('angular'),
+var loader = require('./app/loader'),
     config = require('./config');
 
-angular.module( config.name, ['ngRoute','ngResource']);
-// configuration
-require('./app.routes');
+// bootstrap the app
+module.exports = function( node, options, hideLoaderCallback ) {
+    
+    loader().then(function(){
+        var angular = require('angular');
+        require('./app/definition');
+        
+        var container = angular.element('<div ng-include></div>');
+        container.attr('src', '\'index.html\'');
+    
+        angular.element( node ).append( container );
+        angular.bootstrap(node,[config.name]);
+
+        
+        if( typeof( hideLoaderCallback ) === 'function') {
+            hideLoaderCallback();
+        }
+    });
+    
+};
