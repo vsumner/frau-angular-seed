@@ -98,6 +98,12 @@
         "angular"
       ],
       "exports": "null"
+    },
+    "angular-resource": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "null"
     }
   }
 }
