@@ -1,6 +1,7 @@
 {
   "name": "angular-d3",
   "version": "0.0.0",
+  "private":true,
   "homepage": "https://github.com/vsumner/seed",
   "authors": [
     "Victor Sumner <victor.sumner@d2l.com>"
