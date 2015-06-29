@@ -7,7 +7,7 @@
     "prebuild": "npm run clean -s",
     "build:appconfig": "gulp appconfig",
     "build:css": "node-sass ./src/app.scss | cleancss -o ./dist/app.css",
-    "build:js": "browserify -x angular -s frau-angular-seed ./src/app.js | uglifyjs > ./dist/app.js",
+    "build:js": "browserify -x d2l-locale -x d2l-orgunit -x jquery -x angular -s frau-angular-seed ./src/app.js | uglifyjs > ./dist/app.js",
     "build:html": "gulp html2js",
     "build:resources": "gulp copy-resources-to-dist",
     "build": "npm run build:js && npm run build:css && npm run build:html && npm run build:resources && npm run build:appconfig",
@@ -46,6 +46,7 @@
     "browserify-istanbul": "^0.2.1",
     "browserify-shim": "^3.8.9",
     "clean-css": "^3.3.4",
+    "define": "^1.0.1",
     "free-range-app-utils": "^0.7.0",
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",
@@ -67,6 +68,7 @@
     "parallelshell": "^1.2.0",
     "peanut-gallery": "^1.0.0",
     "phantomjs": "^1.9.17",
+    "q": "^1.4.1",
     "rimraf": "^2.4.0",
     "uglify-js": "^2.4.23"
   },
@@ -74,36 +76,10 @@
   "browserify-shim": {
     "requirejs": "global:requirejs",
     "define": "global:define",
-    "jquery": {
-      "exports": "$"
-    },
-    "angular": {
-      "exports": "angular",
-      "depends": "jquery"
-    },
-    "angular-route": {
-      "depends": [
-        "angular"
-      ],
-      "exports": "null"
-    },
-    "angular-loader": {
-      "depends": [
-        "angular"
-      ],
-      "exports": "null"
-    },
-    "angular-mocks": {
-      "depends": [
-        "angular"
-      ],
-      "exports": "null"
-    },
-    "angular-resource": {
-      "depends": [
-        "angular"
-      ],
-      "exports": "null"
-    }
+    "d2lContext": "global:d2lContext",
+    "d2lLocale": "global:d2lLocale",
+    "d2l-locale": "global:d2lLocale",
+    "angular":"global:angular",
+    "jquery": "global:$"
   }
 }

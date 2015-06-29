@@ -19,6 +19,7 @@
     "angular": "~1.4.1",
     "angular-mocks": "~1.4.1",
     "jquery": "~2.1.4",
-    "angular-resource": "~1.4.1"
+    "angular-resource": "~1.4.1",
+    "requirejs": "~2.1.18"
   }
 }

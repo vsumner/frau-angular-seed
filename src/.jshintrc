@@ -1,4 +1,8 @@
 {
 	"browserify":true,
-	"browser":true
+	"browser":true,
+	"globals": {
+    	"$": false,
+		"jQuery":false
+	}
 }
