@@ -1,9 +1,9 @@
 'use strict';
 
 var publishOptions = {
-	id: '[REPLACEMENT_ID]',
+	id: 'frau-angular-seed',
 	creds: {
-		key: '[REPLACEMENT_KEY]',
+		key: '[TEMP]',
 		secret: process.env.S3_SECRET
 	},
 	devTag: process.env.TRAVIS_COMMIT,
@@ -13,17 +13,18 @@ var publishOptions = {
 var frau = require('free-range-app-utils'),
 	gulp = require('gulp'),
 	pg = require('peanut-gallery'),
-	publisher = require('gulp-frau-publisher').app(publishOptions),
+	publisher = require('gulp-frau-publisher'),
 	ngHtml2Js = require("gulp-ng-html2js"),
 	minifyHtml = require("gulp-minify-html"),
 	uglify = require("gulp-uglify"),
 	concat = require("gulp-concat");
 	
 var	appFilename = 'app.js',
-	localAppResolver = frau.localAppResolver();
+	localAppResolver = frau.localAppResolver(),
+	appPublisher = publisher.app( publishOptions );
 	
 function getTarget() {
-	return (process.env.TRAVIS === 'true') ? publisher.getLocation()
+	return (process.env.TRAVIS === 'true') ? appPublisher.getLocation()
 		: localAppResolver.getUrl();
 }
 
@@ -39,9 +40,9 @@ gulp.task('appresolver', function() {
 
 gulp.task( 'publish-release', function( cb ) {
 	gulp.src('./dist/**')
-		.pipe( publisher.getStream() )
+		.pipe( appPublisher.getStream() )
 		.on( 'end', function() {
-			var message = '[Deployment available online](' + publisher.getLocation() + appFilename + ')';
+			var message = '[Deployment available online](' + appPublisher.getLocation() + appFilename + ')';
 
 			pg.comment( message, {}, function( error, response ) {
 				if( error )

@@ -1,5 +1,7 @@
 {
   "name": "frau-angular-seed",
+  "appId":"urn:d2l:fra:id:seed",
+  "appClass":"urn:d2l:fra:class:seed",
   "version": "1.0.0",
   "description": "seed for angular and frau",
   "main": "src/app.js",
