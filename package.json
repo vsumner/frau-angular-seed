@@ -21,7 +21,7 @@
     "url": "https://github.com/vsumner/frau-angular-seed"
   },
   "homepage": "https://github.com/vsumner/frau-angular-seed",
-  "bugs":{
+  "bugs": {
     "url": "https://github.com/vsumner/frau-angular-seed/issues"
   },
   "author": "Victor Sumner",
@@ -29,6 +29,7 @@
     "bower": "^1.4.1",
     "browserify": "^10.2.4",
     "browserify-shim": "^3.8.9",
+    "clean-css": "^3.3.4",
     "free-range-app-utils": "^0.7.0",
     "gulp": "^3.9.0",
     "gulp-frau-publisher": "^2.2.0",
@@ -39,12 +40,12 @@
     "karma-jasmine": "^0.3.5",
     "karma-jasmine-ajax": "^0.1.12",
     "karma-phantomjs-launcher": "^0.2.0",
+    "node-sass": "^3.2.0",
     "phantomjs": "^1.9.17",
     "rimraf": "^2.4.0",
     "uglify-js": "^2.4.23"
   },
   "browser": {},
-  
   "browserify-shim": {
     "requirejs": "global:requirejs",
     "define": "global:define",
