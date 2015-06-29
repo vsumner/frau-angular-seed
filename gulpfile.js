@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var publishOptions = {
 	id: '[REPLACEMENT_ID]',

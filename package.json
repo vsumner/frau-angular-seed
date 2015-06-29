@@ -7,7 +7,7 @@
     "prebuild": "npm run clean -s",
     "build:appconfig": "gulp appconfig",
     "build:css": "",
-    "build:js": "browserify -x angular -s angulard3 ./src/js/app.js | uglifyjs > ./dist/app.js",
+    "build:js": "browserify -x angular -s frau-angular-seed ./src/app.js | uglifyjs > ./dist/app.js",
     "build": "npm run build:js",
     "clean": "rimraf dist && mkdir dist && rimraf test/coverage",
     "postinstall": "bower install",
@@ -20,6 +20,11 @@
     "type": "git",
     "url": "https://github.com/vsumner/frau-angular-seed"
   },
+  "homepage": "https://github.com/vsumner/frau-angular-seed",
+  "bugs":{
+    "url": "https://github.com/vsumner/frau-angular-seed/issues"
+  },
+  "author": "Victor Sumner",
   "devDependencies": {
     "bower": "^1.4.1",
     "browserify": "^10.2.4",
@@ -41,6 +46,8 @@
   "browser": {},
   
   "browserify-shim": {
+    "requirejs": "global:requirejs",
+    "define": "global:define",
     "jquery": {
       "exports": "$"
     },
