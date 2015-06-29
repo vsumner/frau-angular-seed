@@ -1,8 +1,9 @@
 {
   "name": "frau-angular-seed",
   "version": "1.0.0",
-  "description": "testing out building a new app",
+  "description": "seed for angular and frau",
   "main": "src/app.js",
+  "private":true,
   "scripts": {
     "prebuild": "npm run clean -s",
     "build:appconfig": "gulp appconfig",
@@ -31,15 +32,6 @@
     "watch": "parallelshell 'npm run resolver' 'npm run watch:js' 'npm run watch:appconfig' 'npm run watch:css' 'npm run watch:html'",
     "watch:win": "parallelshell \"npm run resolver\" \"npm run watch:js:win\" \"npm run watch:appconfig:win\" \"npm run watch:css:win\" \"npm run watch:html:win\""
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vsumner/frau-angular-seed"
-  },
-  "homepage": "https://github.com/vsumner/frau-angular-seed",
-  "bugs": {
-    "url": "https://github.com/vsumner/frau-angular-seed/issues"
-  },
-  "author": "Victor Sumner",
   "devDependencies": {
     "bower": "^1.4.1",
     "browserify": "^10.2.4",

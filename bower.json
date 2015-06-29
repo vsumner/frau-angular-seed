@@ -1,10 +1,8 @@
 {
-  "name": "angular-d3",
+  "name": "frau-angular-seed",
   "version": "0.0.0",
   "private":true,
-  "homepage": "https://github.com/vsumner/seed",
   "authors": [
-    "Victor Sumner <victor.sumner@d2l.com>"
   ],
   "license": "MIT",
   "ignore": [
