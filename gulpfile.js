@@ -17,6 +17,9 @@ var frau = require('free-range-app-utils'),
 	ngHtml2Js = require("gulp-ng-html2js"),
 	minifyHtml = require("gulp-minify-html"),
 	uglify = require("gulp-uglify"),
+	gulpFilter = require( 'gulp-filter' ),
+	replace = require( 'gulp-replace' ),
+	streamify = require( 'gulp-streamify' ),
 	concat = require("gulp-concat");
 	
 var	appFilename = 'app.js',
@@ -28,7 +31,35 @@ function getTarget() {
 		: localAppResolver.getUrl();
 }
 
-gulp.task('appconfig', function() {
+/* Replacements used in compiled code */
+function replaceFlagsInDist( path, releaseBuild ) {
+	var filter = gulpFilter( ['**/*.css', '**/*.js', '**/*.html'] );
+	var debugPattern = /\s*?\/\/#debug(.|\s)*?\/\/#enddebug/;
+
+	var stream = gulp.src( './dist/**' )
+		.pipe( filter )
+		.pipe( streamify( replace( /\$APP_PATH\$/gi, path ) ) );
+
+	if( releaseBuild ) {
+		stream = stream.pipe( streamify(
+			replace( debugPattern, '' )
+		) ).pipe( streamify(
+			replace( "'$CORS$',", "" )
+		) );
+	} else {
+		stream = stream.pipe( streamify(
+			replace( "$CORS$", 'http://*:3000/**' )
+		) );
+	}
+
+	return stream.pipe( gulp.dest( 'dist' ) )
+}
+
+gulp.task( 'replace-flags', function() {
+	return replaceFlagsInDist( getTarget(), (process.env.TRAVIS === 'true') );
+} );
+
+gulp.task('appconfig', ['replace-flags'], function() {
 	var target = getTarget();
 	return frau.appConfigBuilder.buildStream( target + appFilename )
 		.pipe( gulp.dest('dist') );
