@@ -26,10 +26,7 @@ var requireJsConfig = {
     'angular-resource':{
       deps:['angular']
     },
-    'angular-route':{
-      deps:['angular']
-    },
-	'angular-loader':{
+	 'angular-loader':{
       deps:['angular']
     },
     'angular':{
@@ -57,7 +54,7 @@ var requireJsConfig = {
  * @type {Object}
  */
 var cssPaths = {
-  
+  'app':'$APP_PATH$app.css'
 };
 
 requirejs.config( requireJsConfig );
@@ -75,6 +72,15 @@ function loadCss(url) {
     link.href = url;
     document.getElementsByTagName("head")[0].appendChild(link);
 }
+
+/**
+ * Application CSS
+ * Defined as a module so that it can be required by requirejs
+ * @return {Void}
+ */
+define('appcss',function(){
+  loadCss(cssPaths.app);
+});
 
 /**
  * Creates a d2lLocale global var so that course-setup-tasks
@@ -107,12 +113,12 @@ define('jquery', [], function() {
     return jQuery;
 });
 
-define('angular-load',['angular-resource','angular-loader','angular-route']);
+define('angular-load',['angular-resource','angular-loader']);
 
 /**
  * Dependencies for the app
  */
-define('frau-load',['d2lLocale', 'd2lContext', 'frau-templates','angular-load']);
+define('frau-load',['d2lLocale', 'd2lContext', 'frau-templates','angular-load','appcss']);
 
 
 /**
